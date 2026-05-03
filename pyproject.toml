@@ -114,5 +114,8 @@ extend-ignore-re = [
     "#\\s*spellchecker:off\\s*\\n.*\\n\\s*#\\s*spellchecker:on"
 ]
 
+[tool.typos.default.extend-words]
+ttest = "ttest"
+
 [tool.typos.files]
 extend-exclude = ["*.svg"]
