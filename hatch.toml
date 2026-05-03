@@ -36,9 +36,9 @@ dev-mode = false
 dependency-groups = ["docs"]
 
 [envs.docs.scripts]
-build = "sphinx-build -W --keep-going -b html docs/source docs/build"
-doctest = "sphinx-build -W --keep-going -b doctest docs/source docs/build"
-linkcheck = "sphinx-build -W --keep-going -b linkcheck docs/source docs/build"
+build = "sphinx-build -n -T -W --keep-going --color -b html docs/source docs/build"
+doctest = "sphinx-build -n -T -W --keep-going --color -b doctest docs/source docs/build"
+linkcheck = "sphinx-build -n -T -W --keep-going --color -b linkcheck docs/source docs/build"
 all = ["build", "doctest", "linkcheck"]
 
 
@@ -70,7 +70,7 @@ extra-dependencies = [
 ]
 
 [[envs.tests.matrix]]
-python = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+python = ["3.10", "3.11", "3.12", "3.13", "3.14"]
 seaborn_version = ["0.11", "0.12", "0.13"]
 
 [envs.tests.overrides]
