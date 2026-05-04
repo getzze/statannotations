@@ -78,6 +78,8 @@ matrix.seaborn_version.extra-dependencies = [
     "seaborn=={matrix:seaborn_version}",
     { value = "matplotlib<3.9", if = ["0.11"]},
     { value = "pandas<2", if = ["0.11", "0.12"]},
+    # TODO: remove when https://github.com/mwaskom/seaborn/issues/3647 is fixed in seaborn
+    { value = "pandas<3", if = ["0.13"]},
     { value = "numpy<2", if = ["0.11", "0.12"]},
 ]
 
