@@ -48,19 +48,16 @@ jobs:
       matrix:
         # keep synchronized with hatch tests matrix
         python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
-        seaborn-version: ["0.11", "0.12", "0.13"]
-        exclude:
-          # exclude seaborn-version 0.11 for python >= 3.12
-          - python-version: "3.12"
+        seaborn-version: ["0.13"]
+        # include seaborn-version [0.11, 0.12] only for python < 3.12
+        include:
+          - python-version: "3.10"
             seaborn-version: "0.11"
-          - python-version: "3.13"
-            seaborn-version: "0.11"
-          - python-version: "3.14"
-            seaborn-version: "0.11"
-          # exclude seaborn-version 0.12 for python >= 3.13
-          - python-version: "3.13"
+          - python-version: "3.10"
             seaborn-version: "0.12"
-          - python-version: "3.14"
+          - python-version: "3.11"
+            seaborn-version: "0.11"
+          - python-version: "3.11"
             seaborn-version: "0.12"
 
     steps:
