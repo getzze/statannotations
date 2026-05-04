@@ -20,6 +20,11 @@ repos:
     hooks:
       - id: typos
 
+  - repo: https://github.com/woodruffw/zizmor-pre-commit
+    rev: v1.24.1
+    hooks:
+    - id: zizmor
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.15.12
     hooks:
