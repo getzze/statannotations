@@ -65,26 +65,21 @@ template = "tests"
 installer = "uv pip install"
 description = "Run the tests suite"
 dependency-groups = ["tests"]
-extra-dependencies = [
-    "seaborn=={matrix:seaborn_version}",
-]
 
 [[envs.tests.matrix]]
 python = ["3.10", "3.11", "3.12", "3.13", "3.14"]
-seaborn_version = ["0.11", "0.12", "0.13"]
+seaborn = ["0.11", "0.12", "0.13"]
 
 [envs.tests.overrides]
-matrix.seaborn_version.extra-dependencies = [
-    "seaborn=={matrix:seaborn_version}",
+matrix.seaborn.extra-dependencies = [
+    "seaborn~={matrix:seaborn}",
     { value = "matplotlib<3.9", if = ["0.11"]},
     { value = "pandas<2", if = ["0.11", "0.12"]},
-    # TODO: remove when https://github.com/mwaskom/seaborn/issues/3647 is fixed in seaborn
-    { value = "pandas<3", if = ["0.13"]},
     { value = "numpy<2", if = ["0.11", "0.12"]},
 ]
 
 [envs.tests.env-vars]
-COVERAGE_FILE = "report/.coverage.{matrix:python}-{matrix:seaborn_version}"
+COVERAGE_FILE = "report/.coverage.{matrix:python}-{matrix:seaborn}"
 COVERAGE_PROCESS_START = "pyproject.toml"
 _COVERAGE_SRC = "statannotations"
 
@@ -127,18 +122,14 @@ run = [
 template = "examples"
 installer = "uv pip install"
 description = "Run the examples"
-python = "3.11"
-extra-dependencies = [
-    "matplotlib<3.9",
-    "seaborn=={matrix:seaborn_version}",
-]
 
 [[envs.examples.matrix]]
-seaborn_version = ["0.11", "0.12", "0.13"]
+python = ["3.10", "3.11", "3.12", "3.13", "3.14"]
+seaborn = ["0.11", "0.12", "0.13"]
 
 [envs.examples.overrides]
-matrix.seaborn_version.extra-dependencies = [
-    "seaborn=={matrix:seaborn_version}",
+matrix.seaborn.extra-dependencies = [
+    "seaborn~={matrix:seaborn}",
     { value = "matplotlib<3.9", if = ["0.11"]},
     { value = "pandas<2", if = ["0.11", "0.12"]},
     { value = "numpy<2", if = ["0.11", "0.12"]},
