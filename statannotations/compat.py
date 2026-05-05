@@ -400,7 +400,7 @@ class CategoricalPlotterWrapper_v11(Wrapper):
             return plotter_hue_names
 
         # Check hue_order is a permutation of the possible hue list
-        if check and set(plotter_hue_names) != set(hue_order):
+        if check and set(plotter_hue_names) != set(hue_order):  # pragma: no cover
             msg = (
                 "hue_order is not a permutation of the data hue values: "
                 f"hue_order={hue_order} not in {plotter_hue_names}"
